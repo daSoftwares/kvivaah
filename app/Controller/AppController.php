@@ -32,12 +32,30 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 	
+	public $components = array('RequestHandler', 'Session');
+	
 	protected $userManagement;
 	protected $errorCode = MSG_INFO_CODE;
 	protected $errorMsg = NULL;
 	
+	public function beforeFilter(){
+		
+	}
 	public function beforeRender(){
-		//$this->set(array('pageTitle' => 'Hello World!'));
+			$this->set($this->setPageMeta());
 			$this->layout = 'custom';
 		}
+	
+	protected function setPageMeta(){
+		$pageMetaArray = array(
+			'pageTitle' => '404 Not Found',
+			'pageKeyword' => '404 Not Found',
+			'pageDesc' => '404 Not Found'
+		);
+		$wholeMetaArray = Configure::read('systemPageMeta');//print_r($wholeMetaArray);exit;
+		if(isset($wholeMetaArray[$this->request->controller][$this->request->action])){
+			$pageMetaArray = $wholeMetaArray[$this->request->controller][$this->request->action];
+		}
+		return $pageMetaArray;
+	}
 }

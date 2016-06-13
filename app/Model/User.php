@@ -1,17 +1,15 @@
 <?php
 App::uses('AppModel', 'Model');
-
 class User extends AppModel {
 	public $useTable = 'tbl_user';
 	public $name='User';
-	
-	  public $hasMany = array( 
-								'UserImage' => array( 
-										'className' => 'UserImage', 
-										'foreignKey' => 'userId', 
-										//'conditions' => 'UserImage.userId = User.id'
-										)
-							);
+ 	public $hasMany = array( 
+					'UserImage' => array( 
+					'className' => 'UserImage', 
+					'foreignKey' => 'userId', 
+					//'conditions' => 'UserImage.userId = User.id'
+					)
+				);
 	/*						
 	public $hasOne = array( 
 								'Status' => array( 
@@ -21,16 +19,14 @@ class User extends AppModel {
 										)
 							);
 		*/				
-		
 		/*public $validate = array(
        // 'userDisplayName' => 'alphaNumeric',
         'userEducation' => array(
-            'rule'    => array('minLength', '50'),
-            'message' => 'Minimum 15 characters long'
-        ),
-      
-    );*/
-	
+           'rule'    => array('minLength', '50'),
+           'message' => 'Minimum 15 characters long'
+       ),
+   );*/
+
 	 public $validate = array(
 	 		'userDisplayName' => array( 
 						'required' => array( 
@@ -132,7 +128,8 @@ class User extends AppModel {
 			return $this->find('all', array(
 								'recursive' =>  ($imgRequired == true ? 1 : -1)
 							)
-				);
+			);
 				
-		}
+
+	}
 }

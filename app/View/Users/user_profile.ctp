@@ -13,14 +13,19 @@ if(isset($userInfo['User']) && count($userInfo['User'])){
     $userFull2 = USER_PROFILE_HTTP_PATH.$userImages[2]['imgName'];
     }
 }
+
 /*
 if(empty($userInfo) || empty($userImages)){
     $errorCode = 2;
     $errorMsg = 
 }*/
-
+ if(!$this->Session->read('userInfo')){
+	 $userProfileImg = 'http://placehold.it/150x150&text=Profile%20Photo';
+	 $userFull1 = 'http://placehold.it/500x800&text=Full%20Length%201';
+	 $userFull2 = 'http://placehold.it/500x800&text=Full%20Length%202';
+	 }
 ?>
-<script src="<?php echo $this->webroot;?>js/jQuery.print.js"></script>
+<script src="<?php echo $this->webroot;?>js/jQuery.print.min.js"></script>
 <div class="row">
  <?php echo $this->element('left-ads-sidebar');?>
 
@@ -100,11 +105,11 @@ if(empty($userInfo) || empty($userImages)){
                 </div>
             </div>
             <div class="panel-footer">
-                <a id="princtProfileBtn" data-original-title="Print Profile" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-print"></i></a>
+                <a  href="#." id="princtProfileBtn" data-original-title="Print Profile" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-print"></i></a>
                <?php if($this->Session->read('userInfo') && ($userDetails->id == $this->Session->read('userInfo')->id)){?>
                 <span class="pull-right">
-                    <a href="editProfile/<?php echo $userDetails->id; ?>" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
-                    <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+                    <a href="<?php echo $this->webroot.PAGE_EDIT_PROFILE.$userDetails->id;?>" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+                    <a href="#." data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
                 </span>
                <?php }?>
             </div>

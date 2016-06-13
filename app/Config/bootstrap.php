@@ -110,3 +110,5 @@ CakeLog::config('error', array(
 
 // import required constats files and library 
 App::import('Lib', 'SystemConstants');
+App::import('Lib', 'SystemMessages');
+Configure::load('systemPageMeta', 'default');

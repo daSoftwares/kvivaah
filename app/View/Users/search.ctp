@@ -11,7 +11,7 @@ $totalResults = count($userList);
             <div class="panel-body">
 
            <?php echo $this->element('alert-msg-bar');?>
-                <?php //if($this->Session->read('userInfo')){
+                <?php if($this->Session->read('userInfo')){
                     
                 if($totalResults){?>
 
@@ -34,7 +34,7 @@ $totalResults = count($userList);
                                         <img src="<?php echo $userProfileImg;?>" class="img-responsive img-circle">
                                     </div>
                                     <div class="col-md-9">
-                                        Name: <a href="#."><?php echo $userInfo->userDisplayName;?></a> <br />
+                                        Name: <a href="<?php echo $this->webroot;?>user/userProfile/<?php echo $userInfo->id;?>" target="_blank"><?php echo $userInfo->userDisplayName;?></a> <br />
                                         Age: <?php $datetime1 = new DateTime('Now');
 							$date1 = $userInfo->userDobAndTime;
 							$date2 = date('Y-m-d H:i:s');
@@ -62,7 +62,7 @@ $totalResults = count($userList);
                 <ul class="pagination pull-right">
                 <?php echo $this->Paginator->numbers(array('currentClass' => 'active', 'currentTag'=>'a', 'tag' => 'li', 'ellipsis' => '...', 'separator'=> ''));?>
                 </ul>
-                <?php //}?>
+                <?php }?>
 
             </div>
         </div>

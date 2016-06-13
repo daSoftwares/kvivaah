@@ -14,10 +14,10 @@ if(isset($userInfo['User']) && count($userInfo['User'])){
 }
 //debug($userDetails);
 ?>
-<link rel="stylesheet" href="<?php echo $this->webroot;?>css/validationEngine.jquery.css" type="text/css"/>
-<script src="<?php echo $this->webroot;?>js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8">
+<link rel="stylesheet" href="<?php echo $this->webroot;?>css/validationEngine.jquery.min.css" type="text/css"/>
+<script src="<?php echo $this->webroot;?>js/jquery.validationEngine-en.min.js" type="text/javascript" charset="utf-8">
 </script>
-<script src="<?php echo $this->webroot;?>js/jquery.validationEngine.js" type="text/javascript" charset="utf-8">
+<script src="<?php echo $this->webroot;?>js/jquery.validationEngine.min.js" type="text/javascript" charset="utf-8">
 </script>
 
 <div class="row">
@@ -27,7 +27,7 @@ if(isset($userInfo['User']) && count($userInfo['User'])){
         <form id="tryitForm" class="form-horizontal" method="post"  enctype="multipart/form-data">
             <fieldset>
                 <!-- Form Name -->
-                <legend>Edit your profile <small><a class="pull-right" href="<?php echo $this->webroot;?>users/userProfile/<?php echo $userDetails->id;?>" target="_blank">View Profile</a></small></legend>
+                <legend>Edit your profile <small><a class="pull-right" href="<?php echo $this->webroot.PAGE_VIEW_PROFILE.$userDetails->id;?>" target="_blank">View Profile</a></small></legend>
                 <?php echo $this->element('alert-msg-bar');?>
                  <?php if(($errorCode !== MSG_ERROR_CODE) && !empty($userDetails)){?>
                 <!-- Text input-->

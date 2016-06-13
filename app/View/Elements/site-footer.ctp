@@ -4,7 +4,7 @@
     	<a href="#">Back to top</a>
     </p>
     <p>
-        &copy; 2014 Company, Inc. &middot; <a href="#">Privacy</a> 
+        &copy; <?php echo date('Y');?> <a href="http://www.dasoftwares.tk" target="_blank">daSoftwares</a>. &middot; <a href="#">Privacy</a> 
         &middot; 
         <a href="#">Terms</a>
         &nbsp;

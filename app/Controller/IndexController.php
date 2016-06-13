@@ -13,13 +13,13 @@ class IndexController extends AppController {
     public $uses = array('User', 'UserImage','AdminUser');
 
     public function beforeFilter() {
+
         parent::beforeFilter();
         $this->userManagement = new UserManagement;
     }
 
     public function index() {
 
-        $this->set(array('pageTitle' => 'Home Page'));
     }
 
     public function registerForFree() {
@@ -71,7 +71,7 @@ class IndexController extends AppController {
                 $this->errorMsg = $e->getMessage();
             }
         }
-        $this->set(array('pageTitle' => 'Register with usss', 'errorCode' => $this->errorCode, 'errorMsg' => $this->errorMsg));
+        $this->set(array('errorCode' => $this->errorCode, 'errorMsg' => $this->errorMsg));
     }
 
     public function doLogin() {
@@ -82,12 +82,15 @@ class IndexController extends AppController {
                     'userMobile' => $this->request->data['userName'],
                     'userPassword' => $this->request->data['password']
                 )))) {
+
                 $this->Session->write('userInfo', (object) $userInfo['User']);
-                $this->Session->write('userImages', (object) $userInfo['UserImages']);
-                $this->redirect('/users/userProfile/' . $userInfo['User']['id']);
+
+                $this->Session->write('userImages', (object) $userInfo['UserImage']);
+
+                $this->redirect('/'.PAGE_VIEW_PROFILE . $userInfo['User']['id'].PAGE_EXTN);
             } else {
                 $this->Session->setFlash('Invalid Login details');
-                $this->redirect("/index/index");
+                $this->redirect('/');
             }
             //debug($userInfo);exit;
         }
@@ -110,7 +113,7 @@ class IndexController extends AppController {
                  } else {
                  
                 $this->Session->setFlash('Invalid Login details');
-                $this->redirect("/index/adminLogin");
+                $this->redirect("/adminLogin".PAGE_EXTN);
             }
             //debug($userInfo);exit;
         }
@@ -122,11 +125,20 @@ class IndexController extends AppController {
         $this->Session->delete('userInfo');
         $this->Session->delete('userImages');
         $this->Session->delete('adminInfo');
-        $this->redirect("/index/index");
+        $this->redirect("/index".PAGE_EXTN);
     }
 
     public function successStories() {
-        $this->set(array('pageTitle' => 'Success Stories'));
+       
     }
+	
+	public function adsWithUs() {
+       
+    }
+	
+	public function contactUs() {
+        
+    }
+
 
 }

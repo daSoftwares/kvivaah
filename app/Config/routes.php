@@ -24,7 +24,21 @@
  * its action called 'display', and we pass a param to select the view file
  * to use (in this case, /app/View/Pages/home.ctp)...
  */
-	Router::connect('/', array('controller' => 'index', 'action' => 'index'));
+	Router::connect('/index', array('controller' => 'index', 'action' => 'index'));
+	Router::connect('/registerForFree', array('controller' => 'index', 'action' => 'registerForFree'));
+	Router::connect('/contactUs', array('controller' => 'index', 'action' => 'contactUs'));
+	Router::connect('/advertiseWithUs', array('controller' => 'index', 'action' => 'adsWithUs'));
+	Router::connect('/doLogin', array('controller' => 'index', 'action' => 'doLogin'));
+	Router::connect('/adminLogin', array('controller' => 'index', 'action' => 'adminLogin'));
+	Router::connect('/doLogout', array('controller' => 'index', 'action' => 'doLogout'));
+	Router::connect('/successStories', array('controller' => 'index', 'action' => 'successStories'));
+	
+	Router::connect('/search/*', array('controller' => 'users', 'action' => 'search'));
+	Router::connect('/editProfile/*', array('controller' => 'users', 'action' => 'editProfile'));
+	Router::connect('/userProfile/*', array('controller' => 'users', 'action' => 'userProfile'));
+	Router::connect('/changePassword', array('controller' => 'users', 'action' => 'changePassword'));
+	
+	Router::parseExtensions('html', 'rss');
 /**
  * ...and connect the rest of 'Pages' controller's URLs.
  */

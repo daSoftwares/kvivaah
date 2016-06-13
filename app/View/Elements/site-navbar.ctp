@@ -15,19 +15,20 @@ $userId = $isSessionPresent ? $this->Session->read('userInfo')->id : NULL;
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="<?php echo $this->webroot;?>">KV</a>
+      <a class="navbar-brand" href="<?php echo $this->webroot.PAGE_HOME;?>">KV</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
       <?php if(!$isSessionPresent){?>
-        <li><a href="<?php echo $this->webroot;?>index/registerForFree">Register For Free</a></li>
+        <li><a href="<?php echo $this->webroot.PAGE_REGISTER;?>">Register For Free</a></li>
         <?php }?>
 
-		<li><a href="#">Advertise With Us</a></li>
-		<!-- <li><a href="<?php echo $this->webroot;?>index/successStories">Success Stories</a></li>-->
-                <li><a href="<?php echo $this->webroot;?>users/userProfile/<?php echo DEMO_USER_PROFILE;?>">Demo Profile</a></li>
+		<li><a href="<?php echo $this->webroot.PAGE_ADVERTISE_WU;?>">Advertise With Us</a></li>
+		<!-- <li><a href="<?php echo $this->webroot.PAGE_SUCC_STORY;?>">Success Stories</a></li>-->
+        <li><a href="<?php echo $this->webroot.PAGE_VIEW_PROFILE.DEMO_USER_PROFILE;?>">Demo Profile</a></li>
+        <!--<li><a href="<?php echo $this->webroot.PAGE_CONTACT;?>">Contact Us</a></li>-->
        </ul>
      
       <ul class="nav navbar-nav navbar-right">
@@ -35,11 +36,11 @@ $userId = $isSessionPresent ? $this->Session->read('userInfo')->id : NULL;
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">More Action <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="<?php echo $this->webroot;?>users/editProfile">Edit Profile</a></li>
-            <li><a href="<?php echo $this->webroot;?>users/userProfile/<?php echo $userId;?>">View Profile</a></li>
-            <li><a href="<?php echo $this->webroot;?>users/changePassword">Change Password</a></li>
+            <li><a href="<?php echo $this->webroot.PAGE_EDIT_PROFILE.$userId;?>">Edit Profile</a></li>
+            <li><a href="<?php echo $this->webroot.PAGE_VIEW_PROFILE.$userId;?>">View Profile</a></li>
+            <li><a href="<?php echo $this->webroot.PAGE_CHANGE_PASSWORD;?>">Change Password</a></li>
             <li class="divider"></li>
-            <li><a href="<?php echo $this->webroot;?>index/doLogout">Logout</a></li>
+            <li><a href="<?php echo $this->webroot.PAGE_LOGOUT;?>">Logout</a></li>
           </ul>
         </li>
  <?php }?>       
@@ -50,7 +51,7 @@ $userId = $isSessionPresent ? $this->Session->read('userInfo')->id : NULL;
                         <li>
                            <div class="row">
                               <div class="col-md-12">
-                                 <form   method="post" action="<?php echo $this->webroot;?>/index/doLogin" id="loginForm">
+                                 <form   method="post" action="<?php echo $this->webroot.PAGE_LOGIN;?>" id="loginForm">
                                     <div class="form-group">
                                        <label class="sr-only" for="email">Email address</label>
                                        <input type="text" class="form-control" name="userName" id="email" placeholder="Registered Mobile No." required="">
@@ -61,7 +62,7 @@ $userId = $isSessionPresent ? $this->Session->read('userInfo')->id : NULL;
                                     </div>
                                     <div class="checkbox">
                                        <label>
-                                       <input type="checkbox" id="rememberMe"> Remember me
+                                       <input type="checkbox" id="rememberMe" name="rememberMe"> Remember me
                                        </label>
                                     </div>
                                     <div class="form-group">

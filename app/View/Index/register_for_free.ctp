@@ -1,8 +1,8 @@
 <?php //debug($errorMsg);?>
-<link rel="stylesheet" href="<?php echo $this->webroot;?>css/validationEngine.jquery.css" type="text/css"/>
-<script src="<?php echo $this->webroot;?>js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8">
+<link rel="stylesheet" href="<?php echo $this->webroot;?>css/validationEngine.jquery.min.css" type="text/css"/>
+<script src="<?php echo $this->webroot;?>js/jquery.validationEngine-en.min.js" type="text/javascript" charset="utf-8">
 	</script>
-	<script src="<?php echo $this->webroot;?>js/jquery.validationEngine.js" type="text/javascript" charset="utf-8">
+	<script src="<?php echo $this->webroot;?>js/jquery.validationEngine.min.js" type="text/javascript" charset="utf-8">
 	</script>
 	
  <div class="row">
